@@ -523,7 +523,7 @@ AC_CHECK_HEADERS(linux/netdevice.h, [], [],
 #endif
 ])
 
-# For ethstat module
+# For ethstat and sff_dmi modules
 AC_CHECK_HEADERS(linux/sockios.h,
     [have_linux_sockios_h="yes"],
     [have_linux_sockios_h="no"],
@@ -5305,6 +5305,7 @@ plugin_disk="no"
 plugin_drbd="no"
 plugin_entropy="no"
 plugin_ethstat="no"
+plugin_sff_dmi="no"
 plugin_fhcount="no"
 plugin_fscache="no"
 plugin_interface="no"
@@ -5567,6 +5568,7 @@ fi
 if test "x$have_linux_sockios_h$have_linux_ethtool_h" = "xyesyes"
 then
 	plugin_ethstat="yes"
+	plugin_sff_dmi="yes"
 fi
 
 if test "x$have_getifaddrs" = "xyes"
@@ -5766,6 +5768,7 @@ AC_PLUGIN([rrdcached],   [$librrd_rrdc_update], [RRDTool output plugin])
 AC_PLUGIN([rrdtool],     [$with_librrd],       [RRDTool output plugin])
 AC_PLUGIN([sensors],     [$with_libsensors],   [lm_sensors statistics])
 AC_PLUGIN([serial],      [$plugin_serial],     [serial port traffic])
+AC_PLUGIN([sff_dmi],     [$plugin_sff_dmi],    [SFF Module Diagnostic Interface])
 AC_PLUGIN([sigrok],      [$with_libsigrok],    [sigrok acquisition sources])
 AC_PLUGIN([smart],       [$plugin_smart],      [SMART statistics])
 AC_PLUGIN([snmp],        [$with_libnetsnmp],   [SNMP querying plugin])
@@ -6143,6 +6146,7 @@ Configuration:
     rrdtool . . . . . . . $enable_rrdtool
     sensors . . . . . . . $enable_sensors
     serial  . . . . . . . $enable_serial
+    sff_dmi . . . . . . . $enable_sff_dmi
     sigrok  . . . . . . . $enable_sigrok
     smart . . . . . . . . $enable_smart
     snmp  . . . . . . . . $enable_snmp

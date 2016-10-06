@@ -906,6 +906,12 @@ serial_la_SOURCES = serial.c
 serial_la_LDFLAGS = $(PLUGIN_LDFLAGS)
 endif
 
+if BUILD_PLUGIN_SFF_DMI
+pkglib_LTLIBRARIES += sff_dmi.la
+sff_dmi_la_SOURCES = sff_dmi.c
+sff_dmi_la_LDFLAGS = $(PLUGIN_LDFLAGS)
+endif
+
 if BUILD_PLUGIN_SIGROK
 pkglib_LTLIBRARIES += sigrok.la
 sigrok_la_SOURCES = sigrok.c
